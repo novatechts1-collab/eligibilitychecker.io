@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Eligibility Checker</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>  
+
+  <div class="welcome">
+   <div class="first">
+   <b>Hello!</b>
+  </div>
+   <hr>
+   Welcome to our Eligibility Checker! We created this application to help students see if they are eligible to admission to a certain institution for a certain course.
+<hr>
+  To start, simply select the institution you are interested in, and then input your grades. The application will then analyze your grades and provide you with an eligibility result. It's a quick and easy way to see if you meet the requirements for your desired program. We hope this tool helps you in your academic journey! Good luck!
+  <hr>
+  
+  
+    First, pick a tertiary institution to continue: 
+    <div class="dropandfact">
+<div class="dropdowns">
+    <div class="dropdown-groupa">
+        <label for="university">University</label>
+        <br>
+        <select name="university" id="university">
+            <option value="">-- Select University --</option>
+            <option value="unilag">University of Lagos</option>
+            <option value="ui">University of Ibadan</option>
+            <option value="abu">Ahmadu Bello University</option>
+        </select>
+    </div>
+
+    <div class="dropdown-groupb">
+        <label for="polytechnic">Polytechnic</label>
+        <br>
+        <select name="polytechnic" id="polytechnic">
+            <option value="">-- Select Polytechnic --</option>
+            <option value="yabatech">Yaba College of Technology</option>
+            <option value="fedpoly_ilaro">Federal Polytechnic, Ilaro</option>
+        </select>
+    </div>
+
+    <div class="dropdown-groupc">
+        <label for="college-edu">College Of Education</label>
+        <br>
+        <select name="college-edu" id="college-edu">
+            <option value="">-- Select College --</option>
+            <option value="aoce">Adeyemi College of Education</option>
+            <option value="fce_akoka">Federal College of Education, Akoka</option>
+        </select>
+    </div>
+
+    <div class="dropdown-groupd">
+        <label for="iei">Institution of Enterprise Innovation</label>
+        <br>
+        <select name="iei" id="iei">
+            <option value="">-- Select Institution of Enterprise Innovation --</option>
+            <option value="niit">NIIT</option>
+            <option value="aptech">Aptech Computer Education</option>
+        </select>
+    </div>
+</div>
+<div class="fact">
+  <div class="did">Did you know?</div>
+<hr>
+
+Did you know that the first overall tertiary institution in Nigeria is Yaba College of Technology, which was established in 1947?
+</div>
+</div>
+<hr>
+Selecting an institution will take you to a page where you can input your grades and check your eligibility for admission. Good luck! Before you continue, please click this checkbox to agree to our terms and conditions:
+<br>
+<input type="checkbox" id="terms" name="terms"> I agree to the <a href="#" target="_blank">terms and conditions</a> 
+<br>
+<button onclick="checkschool() " id="continuebtn">Continue</button>
+
+
+  </div>
+
+
+</body>
+</html>

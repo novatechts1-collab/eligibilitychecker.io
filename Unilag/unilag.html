@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="unilag.css">
+  <script src="unilag.js"></script>
+  <title>Welcome to UNILAG's page</title>
+</head>
+<body>
+  <div class="welcome">
+   <div class="first">
+   <b>Welcome to UNILAG's Page</b>
+  </div>
+   <hr>
+   Welcome to the University of Lagos (UNILAG) page! Here, you can check your eligibility for admission to UNILAG by inputting your grades and other relevant information. UNILAG is one of the most prestigious universities in Nigeria, known for its academic excellence and vibrant campus life. Whether you're interested in pursuing a degree in arts, sciences, engineering, or any other field, this page will help you determine if you meet the admission requirements for UNILAG. Good luck with your application!
+   <hr>
+   <div class="funfacts">
+    <div class="funintro">
+    Here are some facts about UNILAG
+  </div>
+  <ol id="list">
+ <li>
+  UNILAG was established in 1962 and remains one of the top universities in Nigeria and Africa.
+ </li>
+ <li>
+  Its boasts the biggest alumni network in Nigeria consisting of influential figures such as Gov. Babajide Sanwo-Olu, Wole Soyinka, and Chimamanda Ngozi Adichie, Funke Akindele, Richard Mofe-Damijo, and many more.
+ </li>
+ <li>
+  UNILAG has a sprawling campus located in the heart of Lagos, offering state-of-the-art facilities and a vibrant student life.
+ </li>
+  </ol>
+
+  </div>
+  <hr>
+  But you're here to check your eligibility, so let's get to it! Please pick a course from the dropdown menu below to continue:
+  <div class="course">
+    <label for="course-select">Select a course:</label>
+    <br>
+    <select name="course" id="course-select">
+      <option value="">-- Select Course --</option>
+      <option value="architecture">Architecture</option>
+      <option value="medicine">Medicine</option>
+      <option value="engineering">Computer Engineering</option>
+      <option value="law">Law</option>
+      <option value="business_administration">Business Administration</option>
+    </select>
+    <br>
+    <button id="confirm" onclick="confirmcourse()">Confirm</button>
+  </div>
+  
+      <div class="change" id="change"></div> 
+    
+  <hr>
+  <button id="unilag-to-olevel" onclick="unilagolevel()">Proceed to O'Level Check</button>
+</body>
+</html>

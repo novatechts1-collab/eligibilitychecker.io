@@ -1,0 +1,115 @@
+body{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  background-color: rgb(252, 252, 213);
+}
+.first{
+  font-size: larger;
+  text-align: center;
+}
+.welcome{
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    font-size: larger;
+    order: 1;
+}
+.dropdowns{
+    margin: 5px;
+    padding: 10px;
+    order: 2;
+}
+.dropdown-groupa{
+    margin-top: 10px;
+    order: 1;
+}
+#university{
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(4, 124, 160);
+}
+.dropdown-groupb{
+    margin-top: 10px;
+    order: 2;
+}
+#polytechnic{
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(4, 124, 160);
+}
+.dropdown-groupc{
+    margin-top: 10px;
+    order: 3;
+}
+#college-edu{
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(4, 124, 160);
+}
+.dropdown-groupd{
+    margin-top: 10px;
+    order: 4;
+}
+#iei{
+    width: 300px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: rgb(4, 124, 160);
+}
+.dropandfact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    order: 3;
+}
+.fact{
+    
+    width: 100%;
+    max-width: 40%;
+    margin: 25px;
+    margin-left: 0px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    font-size: 17px;
+    box-sizing: border-box;
+    justify-self: center;
+    flex: 1;
+    order: 2;
+}
+
+.did{
+  text-align: center;
+}
+#continuebtn{
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(4, 124, 160);
+    color: white;
+    cursor: pointer;
+    order: 4;
+}
+#continuebtn:hover{
+    background-color: rgb(3, 92, 118);
+    transform: scale(1.05);
+}
+#terms{
+    margin: 15px;
+    order: 5;
+}
