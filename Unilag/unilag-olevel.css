@@ -17,3 +17,43 @@ body{
     order: 1;
     color: #202020;
 }
+.exam{
+    margin: 5px;
+    padding: 10px;
+    order: 2;
+}
+.subjectsandgrade{
+    margin: 5px;
+    padding: 10px;
+    order: 2;
+    
+}
+#exam-select{
+  width: 200px;
+    margin: 6px;
+    margin-left: 0px;
+    padding: 5px;
+    border: 2px solid #c23b3b;
+    border-radius: 5px;
+    color: #c23b3b;
+}
+#subjects, #sittings{
+  width: 50px;
+    margin: 6px;
+    margin-left: 0px;
+    padding: 5px;
+    border: 2px solid #c23b3b;
+    border-radius: 5px;
+    color: #c23b3b;
+}
+.subject-select, .grade-select{
+  border: 2px solid #c23b3b;
+    border-radius: 5px;
+    color: #c23b3b;
+    background-color: #f9f9f9;
+    padding: 8px;
+}
+.subject-select:focus, .grade-select:focus{
+  outline: none;
+  border-color: #6d6b6b;
+}
