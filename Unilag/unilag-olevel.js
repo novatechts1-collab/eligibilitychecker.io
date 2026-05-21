@@ -17,14 +17,16 @@ function generateRows() {
   if (numSubjects > 9) {
     numSubjects = 9;
     numSubjectsInput.value = 9; // Update the input to reflect the max limit
-  } else if (numSubjects < 5) {
+  }
+  if (numSubjects < 5) {
     numSubjects = 5;
     numSubjectsInput.value = 5; // Update the input to reflect the min limit
   }
-    else if (numSittings > 3) {
+  if (numSittings > 3) {
     numSittings = 3;
     numSittingsInput.value = 3; // Update the input to reflect the max limit
-  } else if (numSittings < 1) {
+  }
+  if (numSittings < 1) {
     numSittings = 1;
     numSittingsInput.value = 1; // Update the input to reflect the min limit
   }
@@ -35,7 +37,9 @@ function generateRows() {
   container.innerHTML = "";
 
   // 2. Validate that the number is within your min="5" and max="9" boundaries
-  if (numSubjects < 5 || numSubjects > 9 && numSittings < 1 || numSittings > 3 ) {
+  if (numSubjects < 5 || numSubjects > 9 || numSittings < 1 || numSittings > 3) {
+    document.querySelector('.beforebtn').style.display = 'none';
+    document.getElementById('btn').disabled = true;
     return; // Don't generate anything if the input is invalid
   }
 
@@ -90,17 +94,21 @@ function generateRows() {
   subjectSelects.forEach(select => {
     select.addEventListener('change', () => {
       updateSubjectOptions();
+      updateProceedButtonState();
       scrollToNextField(select);
     });
   });
 
   gradeSelects.forEach(select => {
     select.addEventListener('change', () => {
+      updateProceedButtonState();
       scrollToNextField(select);
     });
   });
 
+  document.querySelector('.beforebtn').style.display = 'block';
   updateSubjectOptions();
+  updateProceedButtonState();
   scrollToLastGeneratedField();
 }
 
@@ -151,6 +159,45 @@ function scrollToNextField(current) {
 
 function scrollToBottom() {
   scrollToLastGeneratedField();
+}
+
+function updateProceedButtonState() {
+  const btn = document.getElementById('btn');
+  const rows = Array.from(document.querySelectorAll('.subject-row'));
+  if (rows.length === 0) {
+    btn.disabled = true;
+    return;
+  }
+
+  const allFilled = rows.every(row => {
+    const subject = row.querySelector('.subject-select').value;
+    const grade = row.querySelector('.grade-select').value;
+    return subject !== '' && grade !== '';
+  });
+
+  btn.disabled = !allFilled;
+}
+
+function tounilagutme() {
+  const btn = document.getElementById('btn');
+  if (btn.disabled) {
+    alert('Please complete every subject and grade field before proceeding.');
+    const rows = Array.from(document.querySelectorAll('.subject-row'));
+    for (const row of rows) {
+      const subject = row.querySelector('.subject-select');
+      const grade = row.querySelector('.grade-select');
+      if (subject.value === '') {
+        scrollToElement(subject);
+        return;
+      }
+      if (grade.value === '') {
+        scrollToElement(grade);
+        return;
+      }
+    }
+    return;
+  }
+  window.location.href = 'unilagutme.html';
 }
 
 window.addEventListener('pageshow', function (event) {
