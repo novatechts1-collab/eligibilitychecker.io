@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNILAG O'Level Page</title>
+  <link rel="stylesheet" href="unilag-olevel.css">
+  <script src="unilag-olevel.js"></script>
+</head>
+<body>
+  <div class="welcome">
+   <div class="first">
+   <b>Welcome to UNILAG's O'Level Page</b>
+  </div>
+   <hr>
+   Welcome to the University of Lagos (UNILAG) page! Here, you can check your eligibility for admission to UNILAG by inputting your grades and other relevant information. UNILAG is one of the most prestigious universities in Nigeria, known for its academic excellence and vibrant campus life. Whether you're interested in pursuing a degree in arts, sciences, engineering, or any other field, this page will help you determine if you meet the admission requirements for UNILAG. Good luck with your application!
+   <hr>
+   Lets get to it! Please input how many subjects you wrote and which examination you took (WAEC, NECO, or NABTEB) to continue:
+    <div class="exam">
+      <label for="exam-select">Select an examination:</label>
+      <br>
+      <select name="exam" id="exam-select" onchange="scrollToBottom()">
+        <option value="">-- Select Examination --</option>
+        <option value="waec">WAEC</option>
+        <option value="neco">NECO</option>
+        <option value="nabteb">NABTEB</option>
+        <option value="gce">GCE</option>
+      </select>
+      <br>
+      <label for="subjects">Number of subjects written:</label>
+      <input type="number" id="subjects" name="subjects" min="5" max="9" onchange="generateRows(); scrollToBottom()">
+      <br>
+      
+   </div>
+   <hr>
+   Please select the subjects you wrote and the grades you obtained in each subject:
+   <div class="subjectsandgrade">
+
+
+   </div>
+  </div>
+</body>
+</html>
