@@ -1,9 +1,11 @@
  
 function generateRows() {
+  
   let numSubjectsInput = document.getElementById('subjects');
   let numSubjects = parseInt(numSubjectsInput.value);
   let numSittingsInput = document.getElementById('sittings');
   let numSittings = parseInt(numSittingsInput.value);
+  
   if (isNaN(numSubjects)) {
     return; // Exit if the input is not a valid number
   }
@@ -19,7 +21,7 @@ function generateRows() {
     numSubjects = 5;
     numSubjectsInput.value = 5; // Update the input to reflect the min limit
   }
-   if (numSittings > 3) {
+    else if (numSittings > 3) {
     numSittings = 3;
     numSittingsInput.value = 3; // Update the input to reflect the max limit
   } else if (numSittings < 1) {
@@ -33,7 +35,7 @@ function generateRows() {
   container.innerHTML = "";
 
   // 2. Validate that the number is within your min="5" and max="9" boundaries
-  if (numSubjects < 5 || numSubjects > 9) {
+  if (numSubjects < 5 || numSubjects > 9 && numSittings < 1 || numSittings > 3 ) {
     return; // Don't generate anything if the input is invalid
   }
 

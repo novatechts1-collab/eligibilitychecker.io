@@ -23,8 +23,8 @@ body{
     order: 2;
 }
 .subjectsandgrade{
-    margin: 5px;
-    padding: 10px;
+    margin: 8px;
+    padding: 20px;
     order: 2;
     
 }
@@ -32,7 +32,7 @@ body{
   width: 200px;
     margin: 6px;
     margin-left: 0px;
-    padding: 5px;
+    padding: 8px 12px;
     border: 2px solid #c23b3b;
     border-radius: 5px;
     color: #c23b3b;
@@ -41,7 +41,7 @@ body{
   width: 50px;
     margin: 6px;
     margin-left: 0px;
-    padding: 5px;
+    padding: 8px 12px;
     border: 2px solid #c23b3b;
     border-radius: 5px;
     color: #c23b3b;
@@ -51,7 +51,7 @@ body{
     border-radius: 5px;
     color: #c23b3b;
     background-color: #f9f9f9;
-    padding: 8px;
+    padding: 10px 12px;
 }
 .subject-select:focus, .grade-select:focus{
   outline: none;
