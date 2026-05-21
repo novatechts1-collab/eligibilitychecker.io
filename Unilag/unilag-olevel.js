@@ -194,24 +194,51 @@ function updateProceedButtonState() {
 }
 
 function tounilagutme() {
-  const btn = document.getElementById('btn');
-  if (btn.disabled) {
+  const numSubjectsInput = document.getElementById('subjects');
+  const numSittingsInput = document.getElementById('sittings');
+  const examSelect = document.getElementById('exam-select');
+  const numSubjects = parseInt(numSubjectsInput.value, 10);
+  const numSittings = parseInt(numSittingsInput.value, 10);
+  const examValue = examSelect.value;
+
+  if (examValue === '') {
+    alert('Please select an examination (WAEC, NECO, NABTEB, or GCE) before proceeding.');
+    return;
+  }
+
+  if (isNaN(numSubjects) || isNaN(numSittings)) {
+    alert('Please enter both the number of subjects and number of sittings, then press Enter to generate the fields.');
+    return;
+  }
+
+  const rows = Array.from(document.querySelectorAll('.subject-row'));
+
+  if (rows.length === 0) {
+    alert('Please enter both number of subjects and number of sittings, then press Enter to generate the fields.');
+    return;
+  }
+
+  const firstMissing = rows.find(row => {
+    const subject = row.querySelector('.subject-select').value;
+    const grade = row.querySelector('.grade-select').value;
+    return subject === '' || grade === '';
+  });
+
+  if (firstMissing) {
     alert('Please complete every subject and grade field before proceeding.');
-    const rows = Array.from(document.querySelectorAll('.subject-row'));
-    for (const row of rows) {
-      const subject = row.querySelector('.subject-select');
-      const grade = row.querySelector('.grade-select');
-      if (subject.value === '') {
-        scrollToElement(subject);
-        return;
-      }
-      if (grade.value === '') {
-        scrollToElement(grade);
-        return;
-      }
+    const subject = firstMissing.querySelector('.subject-select');
+    const grade = firstMissing.querySelector('.grade-select');
+    if (subject.value === '') {
+      scrollToElement(subject);
+      return;
+    }
+    if (grade.value === '') {
+      scrollToElement(grade);
+      return;
     }
     return;
   }
+
   window.location.href = 'unilagutme.html';
 }
 
