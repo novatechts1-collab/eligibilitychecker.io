@@ -184,13 +184,9 @@ function updateProceedButtonState() {
     return;
   }
 
-  const allFilled = rows.every(row => {
-    const subject = row.querySelector('.subject-select').value;
-    const grade = row.querySelector('.grade-select').value;
-    return subject !== '' && grade !== '';
-  });
-
-  btn.disabled = !allFilled;
+  // Keep the Proceed button enabled once subject rows exist,
+  // so validation can show helpful alerts instead of preventing clicks.
+  btn.disabled = false;
 }
 
 function tounilagutme() {
@@ -243,6 +239,7 @@ function tounilagutme() {
 }
 
 window.addEventListener('pageshow', function (event) {
+  document.getElementById("exam-select").value = "";
   document.getElementById("subjects").value = "";
   document.getElementById("sittings").value = "";
 });
