@@ -40,6 +40,7 @@ var isConfirmed = false;
     
 
     if (selectedDept) {
+      isConfirmed = true;
       document.getElementById("change").style.display = "block";
       document.getElementById("change").innerHTML =
       'You have selected <span class="highlight-course">' +
@@ -48,8 +49,16 @@ var isConfirmed = false;
         selectedDept.dept +
         ' </span> department. The courses in this department include: ' +
         selectedDept.courses.join(', ') +
-        '.'
+        '.';
+      scrollToBottom();
     }
+  }
+
+  function scrollToBottom() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 
   function unilagolevel() {
