@@ -33,11 +33,11 @@
       </div>
       <div class="input-row">
         <label for="subjects">Number of subjects written:</label>
-        <input type="number" id="subjects" name="subjects" min="5" max="9" oninput="generateRows(); scrollToBottom()">
+        <input type="number" id="subjects" name="subjects" min="5" max="9" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()">
       </div>
       <div class="input-row">
         <label for="sittings">Number of sittings:</label>
-        <input type="number" id="sittings" name="sittings" min="1" max="3" oninput="generateRows(); scrollToBottom()">
+        <input type="number" id="sittings" name="sittings" min="1" max="3" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()">
       </div>
     </div>
     <hr>
@@ -45,7 +45,7 @@
       <p>Please select the subjects you wrote and the grades you obtained in each subject:</p>
       <div class="subjectsandgrade"></div>
     </div>
-    <button onclick="tounilagutme()" id="btn" disabled>Proceed to UTME Page</button>
+    <button onclick="tounilagutme()" id="btn" disabled>Proceed to UTME Page</button><button onclick="back()"n id="btnback">Back</button>
   </div>
 </body>
 </html>

@@ -1,16 +1,17 @@
  
 function generateRows() {
   
-  let numSubjectsInput = document.getElementById('subjects');
-  let numSubjects = parseInt(numSubjectsInput.value);
-  let numSittingsInput = document.getElementById('sittings');
-  let numSittings = parseInt(numSittingsInput.value);
-  
-  if (isNaN(numSubjects)) {
-    return; // Exit if the input is not a valid number
-  }
-  if (isNaN(numSittings)) {
-    return; // Exit if the input is not a valid number
+  const btn = document.getElementById('btn');
+  const beforeBtn = document.querySelector('.beforebtn');
+  const numSubjectsInput = document.getElementById('subjects');
+  let numSubjects = parseInt(numSubjectsInput.value, 10);
+  const numSittingsInput = document.getElementById('sittings');
+  let numSittings = parseInt(numSittingsInput.value, 10);
+
+  if (isNaN(numSubjects) || isNaN(numSittings)) {
+    btn.disabled = true;
+    beforeBtn.style.display = 'none';
+    return; // Exit if either input is not a valid number
   }
  
 
@@ -38,8 +39,8 @@ function generateRows() {
 
   // 2. Validate that the number is within your min="5" and max="9" boundaries
   if (numSubjects < 5 || numSubjects > 9 || numSittings < 1 || numSittings > 3) {
-    document.querySelector('.beforebtn').style.display = 'none';
-    document.getElementById('btn').disabled = true;
+    beforeBtn.style.display = 'none';
+    btn.disabled = true;
     return; // Don't generate anything if the input is invalid
   }
 
@@ -157,6 +158,20 @@ function scrollToNextField(current) {
   }
 }
 
+function handleEnterKey(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    generateRows();
+  }
+}
+
+function resetGeneratedRows() {
+  const btn = document.getElementById('btn');
+  const beforeBtn = document.querySelector('.beforebtn');
+  btn.disabled = true;
+  beforeBtn.style.display = 'none';
+}
+
 function scrollToBottom() {
   scrollToLastGeneratedField();
 }
@@ -204,3 +219,6 @@ window.addEventListener('pageshow', function (event) {
   document.getElementById("subjects").value = "";
   document.getElementById("sittings").value = "";
 });
+function back() {
+  window.location.href = "unilag.html";
+}

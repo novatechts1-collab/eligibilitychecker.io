@@ -57,7 +57,7 @@ body{
   outline: none;
   border-color: #6d6b6b;
 }
-#btn{
+#btn, #btnback{
     margin-top: 10px;
     padding: 10px 20px;
     border: 2px solid #e2e2e9;
@@ -68,7 +68,8 @@ body{
     order: 4;
     border-radius: 8px;
 }
-#btn:hover{
+#btn:hover, #btnback:hover{
     background-color: #c23b3b;
     transform: scale(1.05);
 }
+
