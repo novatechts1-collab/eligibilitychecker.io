@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background: linear-gradient(135deg, #c23b3b, #a82d2d);
+  background: linear-gradient(135deg, rgb(241, 241, 202), rgb(204, 204, 160));
   min-height: 100vh;
   color: #333;
 }
@@ -46,7 +46,7 @@ body {
 .progress-text {
   text-align: center;
   font-weight: 600;
-  color: #c23b3b;
+  color: rgb(126, 126, 102);
   margin-bottom: 10px;
   font-size: 16px;
 }
@@ -64,7 +64,7 @@ body {
 .progress-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #c23b3b, #a82d2d);
+  background: linear-gradient(90deg, rgb(241, 241, 202), rgb(204, 204, 160));
   border-radius: 10px;
   animation: progressFill 1s ease forwards;
 }
@@ -77,7 +77,7 @@ body {
 .first {
   font-size: 28px;
   text-align: center;
-  color: #c23b3b;
+  color: rgb(126, 126, 102);
   margin-bottom: 15px;
   animation: fadeIn 0.6s ease;
 }
@@ -117,9 +117,9 @@ body {
     max-width: 250px;
     margin: 5px;
     padding: 10px 12px;
-    border: 2px solid #c23b3b;
+    border: 2px solid #918566;
     border-radius: 5px;
-    color: #c23b3b;
+    color: rgb(126, 126, 102);
     background-color: #f9f9f9;
     font-size: 14px;
     cursor: pointer;
@@ -127,7 +127,7 @@ body {
 }
 
 #university:hover {
-    border-color: #a82d2d;
+    border-color: #504f42;
     box-shadow: 0 0 8px rgba(194, 59, 59, 0.2);
 }
 
@@ -153,9 +153,9 @@ body {
     max-width: 250px;
     margin: 5px;
     padding: 10px 12px;
-    border: 2px solid #c23b3b;
+    border: 2px solid #817953;
     border-radius: 5px;
-    color: #c23b3b;
+    color: rgb(126, 126, 102);
     background-color: #f9f9f9;
     font-size: 14px;
     cursor: pointer;
@@ -163,7 +163,7 @@ body {
 }
 
 #polytechnic:hover {
-    border-color: #a82d2d;
+    border-color: #504f42;
     box-shadow: 0 0 8px rgba(194, 59, 59, 0.2);
 }
 
@@ -189,9 +189,9 @@ body {
     max-width: 250px;
     margin: 5px;
     padding: 10px 12px;
-    border: 2px solid #c23b3b;
+    border: 2px solid #948463;
     border-radius: 5px;
-    color: #c23b3b;
+    color: rgb(126, 126, 102);
     background-color: #f9f9f9;
     font-size: 14px;
     cursor: pointer;
@@ -199,7 +199,7 @@ body {
 }
 
 #college-edu:hover {
-    border-color: #a82d2d;
+    border-color: #504f42;
     box-shadow: 0 0 8px rgba(194, 59, 59, 0.2);
 }
 
@@ -222,12 +222,12 @@ body {
 
 #iei {
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     margin: 5px;
     padding: 10px 12px;
-    border: 2px solid #c23b3b;
+    border: 2px solid #b9a366;
     border-radius: 5px;
-    color: #c23b3b;
+    color: rgb(126, 126, 102);
     background-color: #f9f9f9;
     font-size: 14px;
     cursor: pointer;
@@ -235,7 +235,7 @@ body {
 }
 
 #iei:hover {
-    border-color: #a82d2d;
+    border-color: #504f42;
     box-shadow: 0 0 8px rgba(194, 59, 59, 0.2);
 }
 
@@ -272,7 +272,7 @@ body {
 .did {
   text-align: center;
   font-weight: 600;
-  color: #c23b3b;
+  color: rgb(126, 126, 102);
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -289,7 +289,7 @@ body {
 
 .section-card h2 {
   margin-bottom: 10px;
-  color: #a82d2d;
+  color: rgb(126, 126, 102);
   font-size: 18px;
 }
 
@@ -302,7 +302,7 @@ body {
     padding: 12px 24px;
     border: 2px solid #e2e2e9;
     border-radius: 5px;
-    background-color: #c23b3b;
+   background-color: rgb(88, 88, 73);
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -311,7 +311,7 @@ body {
 }
 
 .standard-btn:hover {
-    background-color: #a82d2d;
+    
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(194, 59, 59, 0.3);
 }
@@ -330,22 +330,22 @@ body {
     margin: 15px;
     order: 5;
     animation: fadeIn 0.6s ease 0.5s backwards;
-    accent-color: #c23b3b;
+    color: rgb(126, 126, 102);
 }
 
 #terms + span {
-    color: #333;
+    color: rgb(126, 126, 102);
 }
 
 #terms + span a {
-    color: #c23b3b;
+    color: rgb(126, 126, 102);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 #terms + span a:hover {
-    color: #a82d2d;
+    color: rgb(126, 126, 102);
     text-decoration: underline;
 }
 
