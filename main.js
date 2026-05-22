@@ -1,7 +1,20 @@
+function isHistoryNavigation() {
+  try {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries.length > 0) {
+      return navEntries[0].type === 'back_forward';
+    }
+  } catch (e) {
+    // Fallback for older browsers
+    return performance.navigation.TYPE_BACK_FORWARD === performance.navigation.type;
+  }
+  return false;
+}
+
 function checkschool() {
   var terms = document.getElementById('terms');
   if (!terms.checked) {
-    alert('Please agree to the terms and conditions before continuing.');
+    alert('✅ Please agree to the terms and conditions before continuing.');
     return;
   }
 
@@ -42,10 +55,14 @@ function checkschool() {
   var destinationPage = destinations[selectedValue];
 
   if (!destinationPage) {
-    alert('No page found for this selection.');
+    alert('❌ No page found for this selection.');
     return;
   }
 
+  // Save selection and set navigation flag
+  localStorage.setItem('selectedInstitution', selectedValue);
+  sessionStorage.setItem('preserveInstitutionOnReturn', 'true');
+  
   window.location.href = destinationPage;
 }
 
@@ -88,14 +105,47 @@ window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('continuebtn').click();
     }
   });
+
+  // Initialize the page on load
+  initializeInstitutionPage();
 });
-window.addEventListener('pageshow', function(event)
-{
-  
-  document.getElementById("university").value = "";
-  document.getElementById("polytechnic").value = "";
-  document.getElementById("college-edu").value = "";
-  document.getElementById("iei").value = "";
-  terms.checked = false;
+
+function shouldPreserveInstitutionState() {
+  return sessionStorage.getItem('preserveInstitutionOnReturn') === 'true' || isHistoryNavigation();
 }
-);
+
+function initializeInstitutionPage() {
+  const terms = document.getElementById('terms');
+  
+  if (shouldPreserveInstitutionState()) {
+    // Load saved institution if coming back
+    const savedInstitution = localStorage.getItem('selectedInstitution');
+    if (savedInstitution) {
+      // Find and select the saved institution
+      const allSelects = [
+        document.getElementById("university"),
+        document.getElementById("polytechnic"),
+        document.getElementById("college-edu"),
+        document.getElementById("iei")
+      ];
+      allSelects.forEach(select => {
+        if (Array.from(select.options).some(opt => opt.value === savedInstitution)) {
+          select.value = savedInstitution;
+        }
+      });
+      terms.checked = true;
+    }
+    sessionStorage.removeItem('preserveInstitutionOnReturn');
+  } else {
+    // Clear all selections on fresh load
+    document.getElementById("university").value = "";
+    document.getElementById("polytechnic").value = "";
+    document.getElementById("college-edu").value = "";
+    document.getElementById("iei").value = "";
+    terms.checked = false;
+  }
+}
+
+window.addEventListener('pageshow', function(event) {
+  initializeInstitutionPage();
+});
