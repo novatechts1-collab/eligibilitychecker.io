@@ -159,17 +159,32 @@ function scrollToNextField(current) {
 }
 
 function handleEnterKey(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    generateRows();
+  if (event.key !== 'Enter') {
+    return;
   }
+
+  const target = event.target;
+  const interactiveTags = ['BUTTON', 'SELECT', 'TEXTAREA'];
+  if (interactiveTags.includes(target.tagName) || (target.tagName === 'INPUT' && target.id !== 'subjects' && target.id !== 'sittings')) {
+    return;
+  }
+
+  event.preventDefault();
+  generateRows();
 }
+
+window.addEventListener('keydown', handleEnterKey);
 
 function resetGeneratedRows() {
   const btn = document.getElementById('btn');
   const beforeBtn = document.querySelector('.beforebtn');
-  btn.disabled = true;
+  // Keep Proceed enabled so users can click it and receive helpful alerts
+  btn.disabled = false;
   beforeBtn.style.display = 'none';
+  const container = document.querySelector('.subjectsandgrade');
+  if (container) {
+    container.innerHTML = '';
+  }
 }
 
 function scrollToBottom() {
@@ -179,13 +194,8 @@ function scrollToBottom() {
 function updateProceedButtonState() {
   const btn = document.getElementById('btn');
   const rows = Array.from(document.querySelectorAll('.subject-row'));
-  if (rows.length === 0) {
-    btn.disabled = true;
-    return;
-  }
-
-  // Keep the Proceed button enabled once subject rows exist,
-  // so validation can show helpful alerts instead of preventing clicks.
+  // Always keep Proceed enabled so `tounilagutme()` can show
+  // specific validation alerts even when rows haven't been generated yet.
   btn.disabled = false;
 }
 
@@ -209,8 +219,8 @@ function tounilagutme() {
 
   const rows = Array.from(document.querySelectorAll('.subject-row'));
 
-  if (rows.length === 0) {
-    alert('Please enter both number of subjects and number of sittings, then press Enter to generate the fields.');
+  if (rows.length === 0 || rows.length !== numSubjects) {
+    alert('Please click Enter after entering the number of subjects and number of sittings to generate the fields before proceeding.');
     return;
   }
 
