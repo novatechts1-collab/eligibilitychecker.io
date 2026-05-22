@@ -1,4 +1,48 @@
  
+function isHistoryNavigation() {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries.length > 0) {
+        return navEntries[0].type === 'back_forward';
+    }
+    return performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD;
+}
+
+function shouldPreserveOLevelState() {
+    return sessionStorage.getItem('preserveOLevelOnReturn') === 'true' || isHistoryNavigation();
+}
+
+function saveOLevelData() {
+    const rows = Array.from(document.querySelectorAll('.subject-row'));
+    const olevelData = [];
+    
+    rows.forEach(row => {
+        const subject = row.querySelector('.subject-select').value;
+        const grade = row.querySelector('.grade-select').value;
+        olevelData.push({ subject, grade });
+    });
+    
+    localStorage.setItem('olevelData', JSON.stringify(olevelData));
+}
+
+function loadOLevelData() {
+    const savedData = localStorage.getItem('olevelData');
+    if (savedData) {
+        try {
+            const olevelData = JSON.parse(savedData);
+            const rows = Array.from(document.querySelectorAll('.subject-row'));
+            
+            olevelData.forEach((item, index) => {
+                if (index < rows.length) {
+                    rows[index].querySelector('.subject-select').value = item.subject;
+                    rows[index].querySelector('.grade-select').value = item.grade;
+                }
+            });
+        } catch (e) {
+            console.error('Error loading O\'Level data:', e);
+        }
+    }
+}
+
 function generateRows() {
   
   const btn = document.getElementById('btn');
@@ -97,6 +141,7 @@ function generateRows() {
       updateSubjectOptions();
       updateProceedButtonState();
       scrollToNextField(select);
+      saveOLevelData();
     });
   });
 
@@ -104,6 +149,7 @@ function generateRows() {
     select.addEventListener('change', () => {
       updateProceedButtonState();
       scrollToNextField(select);
+      saveOLevelData();
     });
   });
 
@@ -111,6 +157,7 @@ function generateRows() {
   updateSubjectOptions();
   updateProceedButtonState();
   scrollToLastGeneratedField();
+  loadOLevelData();
 }
 
 function updateSubjectOptions() {
@@ -245,14 +292,27 @@ function tounilagutme() {
     return;
   }
 
+  saveOLevelData();
+  sessionStorage.setItem('preserveOLevelOnReturn', 'true');
   window.location.href = 'unilagutme.html';
 }
 
-window.addEventListener('pageshow', function (event) {
-  document.getElementById("exam-select").value = "";
-  document.getElementById("subjects").value = "";
-  document.getElementById("sittings").value = "";
-});
+function initializeOLevelPage() {
+  if (!shouldPreserveOLevelState()) {
+    localStorage.removeItem('olevelData');
+    document.getElementById("exam-select").value = "";
+    document.getElementById("subjects").value = "";
+    document.getElementById("sittings").value = "";
+    const container = document.querySelector('.subjectsandgrade');
+    if (container) {
+      container.innerHTML = '';
+    }
+  }
+  sessionStorage.removeItem('preserveOLevelOnReturn');
+}
+
+window.addEventListener('pageshow', initializeOLevelPage);
+
 function back() {
   window.location.href = "unilag.html";
 }

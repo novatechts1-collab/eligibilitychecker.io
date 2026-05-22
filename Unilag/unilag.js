@@ -1,6 +1,19 @@
 var isConfirmed = false;
-    var selectedDept = null;
-  function confirmcourse() {
+var selectedDept = null;
+
+function isHistoryNavigation() {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries.length > 0) {
+        return navEntries[0].type === 'back_forward';
+    }
+    return performance.navigation && performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD;
+}
+
+function shouldPreserveCourseState() {
+    return sessionStorage.getItem('preserveCourseOnReturn') === 'true' || isHistoryNavigation();
+}
+
+function confirmcourse() {
     
     var courseSelect = document.getElementById('course-select');
     var selectedCourse = courseSelect.value;
@@ -41,9 +54,11 @@ var isConfirmed = false;
 
     if (selectedDept) {
       isConfirmed = true;
+      localStorage.setItem('selectedCourse', selectedCourse);
+      localStorage.setItem('readableCourseName', readableCourseName);
       document.getElementById("change").style.display = "block";
       document.getElementById("change").innerHTML =
-      'You have selected <span class="highlight-course">' +
+      '✅ Great choice! You have selected <span class="highlight-course">' +
         readableCourseName +
         '</span>. This course falls under the <span class="highlight-dept">' +
         selectedDept.dept +
@@ -65,6 +80,7 @@ var isConfirmed = false;
     var SelectedCourse = document.getElementById('course-select').value;
     
     if (SelectedCourse && isConfirmed) {
+      sessionStorage.setItem('preserveCourseOnReturn', 'true');
       window.location.href = "unilag-olevel.html";
     }
     else {
@@ -75,10 +91,44 @@ var isConfirmed = false;
 
     
   };
-  window.addEventListener('pageshow', function(event)
-{
-  isConfirmed = false;
-  document.getElementById("course-select").value = "";
-  
-}
-);
+
+  function loadCourseData() {
+    if (!shouldPreserveCourseState()) {
+      localStorage.removeItem('selectedCourse');
+      localStorage.removeItem('readableCourseName');
+      isConfirmed = false;
+      return;
+    }
+
+    const savedCourse = localStorage.getItem('selectedCourse');
+    const savedCourseName = localStorage.getItem('readableCourseName');
+    
+    if (savedCourse) {
+      document.getElementById('course-select').value = savedCourse;
+      isConfirmed = true;
+      
+      if (savedCourseName) {
+        document.getElementById("change").style.display = "block";
+        document.getElementById("change").innerHTML =
+        'You have selected <span class="highlight-course">' +
+          savedCourseName +
+          '</span>. This course falls under the <span class="highlight-dept">Department</span> department.';
+        scrollToBottom();
+      }
+    }
+
+    sessionStorage.removeItem('preserveCourseOnReturn');
+  }
+
+  window.addEventListener('pageshow', function(event) {
+    if (!shouldPreserveCourseState()) {
+      isConfirmed = false;
+      document.getElementById("course-select").value = "";
+      document.getElementById("change").style.display = "none";
+      localStorage.removeItem('selectedCourse');
+      localStorage.removeItem('readableCourseName');
+    } else {
+      loadCourseData();
+    }
+  });
+

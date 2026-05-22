@@ -3,29 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UNILAG UTME Page</title>
+  <title>UNILAG Eligibility Checker - UTME Scores</title>
   <link rel="stylesheet" href="unilagutme.css">
   <script src="unilagutme.js"></script>
 </head>
 <body>
+  <!-- Progress Indicator -->
+  <div class="progress-container">
+    <div class="progress-text">Step 3 of 3: UTME Scores</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
   <div class="welcome">
     <div class="first">
-      <strong>Welcome to UNILAG's O'Level Page</strong>
+      ✨ Step 3: Your UTME Performance – The Final Piece
     </div>
     <hr>
     <p>
-      Welcome to the University of Lagos (UNILAG) UTME page! Here, you can check your eligibility for admission to UNILAG by inputting your UTME score and other relevant information. This is the final step before your analysis is completed. Thank you for your co-operation!
+      Welcome to the final stage of your UNILAG eligibility assessment! Your UTME (Unified Tertiary Matriculation Examination) results are the decisive factor in determining your admission status. Here, you'll input your four UTME subjects and their scores to complete your profile. English Language is mandatory—it forms the foundation of your academic journey at UNILAG. After this step, we'll generate your comprehensive eligibility analysis.
     </p>
     <hr>
 
-    <p>
-      Let's get to it! Please input your UTME subjects and their scores to continue. 
-      <br>
-      <strong id="note">Note : <b style="color: red;"> English Language </b> is a compulsory subject so  4 input fields for both subject and score will be generated but only 3 the subject fields will be for you to input your subjects and scores as the first one will be for English Language. Please ensure you input the correct subjects and scores to get an accurate eligibility result.</strong>
-    </p>
- <div class="inputfields">
-  
-    
+    <div class="note"> 
+      <strong>📌 Note:</strong> <i style="color: rgb(177, 53, 53);"> English Language </i> is a compulsory subject. Your score must be between 0-100.
+    </div>
+   
+    <div class="utme-container">
+      <h3>📊 Enter Your UTME Subjects and Scores (%)</h3>
+      
+      <div class="utme-grid">
+        <div class="grid-item">
+            <select class="subject-input locked" disabled>
+                <option value="English Language">✓ English Language (Mandatory)</option>
+            </select>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="score-input" min="0" max="100" placeholder="Score %" required>
+        </div>
+
+        <div class="grid-item">
+            <select class="subject-input" required>
+                <option value="">Select Subject 2</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="Literature in English">Literature in English</option>
+                <option value="Economics">Economics</option>
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Government">Government</option>
+                <option value="Civic Education">Civic Education</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Agricultural Science">Agricultural Science</option>
+                <option value="Fine Art">Fine Art</option>
+                <option value="Music">Music</option>
+            </select>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="score-input" min="0" max="100" placeholder="Score %" required>
+        </div>
+
+        <div class="grid-item">
+            <select class="subject-input" required>
+                <option value="">Select Subject 3</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="Literature in English">Literature in English</option>
+                <option value="Economics">Economics</option>
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Government">Government</option>
+                <option value="Civic Education">Civic Education</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Agricultural Science">Agricultural Science</option>
+                <option value="Fine Art">Fine Art</option>
+                <option value="Music">Music</option>
+            </select>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="score-input" min="0" max="100" placeholder="Score %" required>
+        </div>
+
+        <div class="grid-item">
+            <select class="subject-input" required>
+                <option value="">Select Subject 4</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="Literature in English">Literature in English</option>
+                <option value="Economics">Economics</option>
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Government">Government</option>
+                <option value="Civic Education">Civic Education</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Agricultural Science">Agricultural Science</option>
+                <option value="Fine Art">Fine Art</option>
+                <option value="Music">Music</option>
+            </select>
+        </div>
+        <div class="grid-item">
+            <input type="number" class="score-input" min="0" max="100" placeholder="Score %" required>
+        </div>
+      </div>
+      
+      <div class="success-message" id="successMessage"></div>
+      <button type="button" onclick="saveUTMEData()" class="proceed-btn standard-btn">✅ Save & Complete</button>
+      <button class="backbtn standard-btn" onclick="back()">← Back to O'Level</button>
+    </div>
   </div>
 </body>
 </html>

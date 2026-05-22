@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UNILAG O'Level Page</title>
+  <title>UNILAG Eligibility Checker - O'Level Results</title>
   <link rel="stylesheet" href="unilag-olevel.css">
   <script src="unilag-olevel.js"></script>
 </head>
 <body>
+  <!-- Progress Indicator -->
+  <div class="progress-container">
+    <div class="progress-text">Step 2 of 3: O'Level Results</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+  </div>
+
   <div class="welcome">
     <div class="first">
-      <strong>Welcome to UNILAG's O'Level Page</strong>
+      📖 Step 2: Your Secondary School Excellence
     </div>
     <hr>
     <p>
-      Welcome to the University of Lagos (UNILAG) O'Level Page! Here, you can check your eligibility for admission to UNILAG by inputting your O'Level Subjects, Grades and Exam taken. The page that succeeds this will be the final step before your analysis is completed. Thank you for your co-operation!
-    <hr>
-    <p>
-      Let's get to it! Please input how many subjects you wrote and which examination you took (WAEC, NECO, NABTEB, or GCE) to continue:
+      Now let's review your O'Level results! Your secondary school achievements are a crucial component of your UNILAG admission profile. Please enter the examination body you wrote with (WAEC, NECO, NABTEB, or GCE), along with your subjects and the grades you obtained. This information helps us assess your academic foundation and readiness for university-level studies. You're getting closer to discovering your eligibility!
     </p>
-    <div class="exam">
+    <hr>
+    
+    <div class="exam section-card">
+      <p><strong>📝 Provide Your Examination Details</strong></p>
       <div class="select">
-        <label for="exam-select">Select an examination:</label>
+        <label for="exam-select">Which examination did you take?</label>
         <select name="exam" id="exam-select" onchange="scrollToBottom()">
           <option value="">-- Select Examination --</option>
           <option value="waec">WAEC</option>
@@ -31,20 +39,26 @@
         </select>
       </div>
       <div class="input-row">
-        <label for="subjects">Number of subjects written:</label>
-        <input type="number" id="subjects" name="subjects" min="5" max="9" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()">
+        <label for="subjects">How many subjects did you write? (5-9)</label>
+        <input type="number" id="subjects" name="subjects" min="5" max="9" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()" placeholder="e.g., 6">
       </div>
       <div class="input-row">
-        <label for="sittings">Number of sittings:</label>
-        <input type="number" id="sittings" name="sittings" min="1" max="3" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()">
+        <label for="sittings">How many sittings? (1-3)</label>
+        <input type="number" id="sittings" name="sittings" min="1" max="3" onkeydown="handleEnterKey(event)" oninput="resetGeneratedRows()" placeholder="e.g., 1">
       </div>
+      <p style="font-size: 12px; color: #666;">💡 Press Enter or scroll down after entering your numbers to generate subject fields.</p>
     </div>
+    
     <hr>
     <div class="beforebtn" style="display:none;">
-      <p>Please select the subjects you wrote and the grades you obtained in each subject:</p>
+      <p><strong>📚 Enter Your Subjects and Grades:</strong></p>
       <div class="subjectsandgrade"></div>
     </div>
-    <button onclick="tounilagutme()" id="btn">Proceed to UTME Page</button><button onclick="back()" id="btnback">Back</button>
+    
+    <div class="success-message" id="successMessage"></div>
+    
+    <button onclick="tounilagutme()" id="btn" class="standard-btn">✅ Proceed to UTME Page</button>
+    <button onclick="back()" id="btnback" class="standard-btn">← Back to Course Selection</button>
   </div>
 </body>
 </html>
