@@ -155,8 +155,8 @@ body{
 }
 
 .subject-select, .grade-select {
-    width: 100%;
-    flex: 1;
+    width: 200px;
+    
 }
 
 #exam-select:hover, .subject-select:hover, .grade-select:hover, #subjects:hover, #sittings:hover {
